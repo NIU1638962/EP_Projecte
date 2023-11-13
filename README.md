@@ -6,3 +6,4 @@ Integrants del projecte:
 * Guillem Garcia Dausà (membre de l'SCRUM team)
 * Joel Tapia Salvador (membre de l'SCRUM team)
 * Martí Llinés Viñals (Product owner)
+Scrum Daily Meetings Chart: https://docs.google.com/spreadsheets/d/1eOsJ5xZz_XC1oahavU4r7Whw34ymZDSuLTJGv2iBAus/edit#gid=1085569004  
