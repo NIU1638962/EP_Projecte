@@ -1,8 +1,8 @@
-Requisit: Pagament en un sistema segur, àgil i transparent
+Requisit: Sistema de pagament
 
 Descripció: Els clients han de poder donar d'alta el seu mètode preferit de pagament en un sistema segur i cal implementar algun tipus de "pagament en un clic" semblant a què té Amazon. Si volem que el
 projecte tingui èxit la forma de fer el pagament ha de ser el més àgil i transparent possible.
 
-Tipus: 
+Tipus: Objectiu de Disseny
 
 Stakeholder: Alba Torres 
