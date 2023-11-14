@@ -1,0 +1,11 @@
+Cas d'ús: Realitzar una comanda mensual amb enviaments automàtics.
+
+Requisit 1: Com a usuari de MyPersonalShopper, vull poder subscriure'm mensualment i rebre automàticament una
+comanda amb les 5 peces que el meu Personal Shopper triï.
+
+Requisit 2: Com a usuari de MyPersonalShopper, vull poder triar les peces que m'agradi i enviar la resta de
+tornada, i se m'apliqui un 25% de descompte quan em quedi amb les cinc peces.
+
+Dependència: El requisit 1 depèn del requisit 2 ja que l'usuari no pot rebre automàticament una comanda amb les
+peces triades pel Personal Shopper si no ha triat les peces de la comanda anterior i indicat quines vol conservar.
+El descompte del 25% s'aplica quan es compleix aquesta condició.
