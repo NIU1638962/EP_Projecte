@@ -62,4 +62,7 @@ Juli Alafia:
 Joan Campoy:
 	Paràgraf 2 (suggerència):
 	- Hauria d'haver una espècie de xat amb el PersonalShopper per una comunicació fluïda.
-	- El client hauria de poder sol·licitar un canvi de PersonalShopper.
+	- El client hauria de poder sol·licitar un canvi de PersonalShopper per si no l'acaba de convèncer.
+	- Implementar un tipus de subscripció mensual per a que els sistema et vagi enviant comandes de 5 peces sense que l'usuari pensi en realitzar la comanda.
+	- Li desagrada que els 10€ cobrats per assessorament en cas que no et quedis amb cap peça de roba no es puguin "reutilitzar" per fer altres comandes (opina que amb els beneficis dels preus de la roba en sí l'empresa tindria suficients beneficis).
+	- 
