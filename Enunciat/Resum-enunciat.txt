@@ -1,0 +1,54 @@
+Julieta:
+	Text:
+	- L'aplicació serà online, així el client pot fer comandes a domicili.
+	1: 
+	- L'usuari s'ha de registrar a la pàgina web de l'aplicació.
+	- Un cop l'usuari s'hagi registrat, se li demanarà d'omplir el seu perfil d'estil. Aquest consisteix en talla, gustos i preferències. [PREGUNTA: A què es refereix amb gustos i preferències? Peces de roba i colors? o al revés?]
+	- Després d'omplir el perfil d'estil, l'aplicació li assignarà un Personal Shopper que tindrà en compte el perfil d'estil de l'usuari. 
+	- El Personal Shopper ha de ser capaç d'oferir combinacions de peces de roba que millor s'adaptin a l'usuari.
+	2:
+	- L'usuari amb un perfil d'estil podrà fer comandes seleccionant l'opció "Fer demanat"
+	- La comanda consistirà en 5 peces de roba ofertes pel Personal Shopper.
+	- El preu de la comanda serà la suma del preu de les 5 peces recomanades més 10€ pel servei d'assessorament (-10€ del servei d'assessorament si et quedes amb almenys una peça de roba al final).
+	- En la primera comanda, el servei d'assessorament serà gratuït.
+	3:
+	- L'usuari rebrà la comanda amb les 5 peces seleccionades pel Personal Shopper.
+	- Dintre la caixa de l'enviament, l'usuari trobarà fitxes amb looks de com combinar cada peça i una nota amb consells generada pel Personal Shopper.
+	4:
+	- L'usuari té 1 setmana per escollir quines peces de roba es queda i quines retorna. La decisió la fa mitjançant el seu usuari a la pàgina web.
+	- Si l'usuari es queda amb totes, se li aplicarà un 25% de descompte. 
+	- L'usuari ha d'indicar els motius de devolució dels poductes que no vulgui.
+	- Amb els motius de devolució oferts, el Personal Shopper <<aprendrà>> sobre aquests resultats. 
+	5:
+	- La caixa de devolució tindrà una bossa destinada a la devolució de les peces indesitjades, junt amb unes instruccions sobre com retornar-les.
+	- No hi haurà despeses d'enviament en lliuraments ni devolucions.
+	- Els 10€ d'assessorament s'apliquen amb cada comanda.
+
+Lluís Lara:
+	Text:
+	- Roba (paràgrafs 2 i 3)
+		- Vol aconseguir acords comercials amb marques de roba de primera qualitat.
+		- Li interessa el concepte d'exclusivitat també, aconseguint acords comercials amb marques poc conegudes que ofereixin una bona relació qualitat-preu.
+	- Stock (paràgraf 4)
+		- Inicialment no es teballa amb stock: les empreses que colaborin han de servir la comanda en 24h màxim.
+		- El Personal Shopper escull les 5 peces i les passa al departament de compres per a que aquests facin la comanda a les marques de roba.
+		- Si alguna peça de roba no està disponible, se li notificarà al Personal Shopper i aquest escollirà una altra peça disponible.
+	- Enviament (paràgraf 5)
+		- Un cop rebudes les 5 peces, el departament de compres les empaquetarà amb els collages de com combinar cada peça i la nota amb els consells del Presonal Shopper.
+	- Petició personal (paràgraf 6)
+		- La metodologia de desenvolupament ha de ser de tipus àgil.
+
+Alba Torres:
+	Pagament:
+	- El pagament ha de ser segur, complint tots els estàndards de ciber-seguretat
+	- S'acceptaran els mètodes de pagament amb targeta de dèbit, crèdit, AmericanExpress i PayPal.
+	- No s'acceptaran els mètodes de pagament "contrareemborsament" (que significa pagar un cop s'ha rebut el paquet) ni transferència bancària.
+	- Els clients han de poder donar d'alta el seu mètode preferit de pagament en un sistema segur.
+	- S'ha d'implementar un "pagament en un clic" semblant al d'Amazon.
+	Registrar-se:
+	- Els clients han d'omplir el seu perfil amb informació el més detallada possible.
+	- Durant la creació del perfil s'usuari, aquest ha d'entendre i acceptar el 'Reglament General de la Protecció de Dades'
+	- La pàgina web ha d'acomplir el 'Reglament General de la Protecció de Dades'.
+
+Juli Alafia:
+	- Personal Shopper
