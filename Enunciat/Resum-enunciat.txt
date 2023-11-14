@@ -58,3 +58,8 @@ Juli Alafia:
 	- El feedback sobre quan es descarta una peça de roba és important.
 	Objecció:
 	- Li agradaria tenir disponible els catàlegs complets de les peces de marques amb les que es treballa [CONFLICTE AMB LUIS LARA]. Creu que així el departament de compres s'estalviaria refer comandes en cas que hi hagi una peça de roba no disponible.
+
+Joan Campoy:
+	Paràgraf 2 (suggerència):
+	- Hauria d'haver una espècie de xat amb el PersonalShopper per una comunicació fluïda.
+	- El client hauria de poder sol·licitar un canvi de PersonalShopper.
