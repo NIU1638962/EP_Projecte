@@ -1,5 +1,6 @@
 Julieta:
 	Text:
+	- Nom del projecte: MyPersonalShopper
 	- L'aplicació serà online, així el client pot fer comandes a domicili.
 	1: 
 	- L'usuari s'ha de registrar a la pàgina web de l'aplicació.
@@ -24,7 +25,7 @@ Julieta:
 	- No hi haurà despeses d'enviament en lliuraments ni devolucions.
 	- Els 10€ d'assessorament s'apliquen amb cada comanda.
 
-Lluís Lara:
+Luis Lara:
 	Text:
 	- Roba (paràgrafs 2 i 3)
 		- Vol aconseguir acords comercials amb marques de roba de primera qualitat.
@@ -51,4 +52,9 @@ Alba Torres:
 	- La pàgina web ha d'acomplir el 'Reglament General de la Protecció de Dades'.
 
 Juli Alafia:
-	- Personal Shopper
+	Personal Shopper:
+	- La informació del client sobre el seu perfil d'estil ha de ser detallada.
+	- La informació detallada inclou les talles de l'usuari, els gustos i les preferències. 
+	- El feedback sobre quan es descarta una peça de roba és important.
+	Objecció:
+	- Li agradaria tenir disponible els catàlegs complets de les peces de marques amb les que es treballa [CONFLICTE AMB LUIS LARA]. Creu que així el departament de compres s'estalviaria refer comandes en cas que hi hagi una peça de roba no disponible.
