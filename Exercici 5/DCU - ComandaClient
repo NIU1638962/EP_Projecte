@@ -1,26 +1,26 @@
 __________________________________________________________________________________
-|       Versió       | 1.0
+|       Versió       | 1.0                                                       |
 __________________________________________________________________________________
-|     Descripció     | Una comanda per part d'un client
+|     Descripció     | Una comanda per part d'un client                          |
 __________________________________________________________________________________
-|       Actors       | Client, PersonalShopper
+|       Actors       | Client, PersonalShopper                                   |
 __________________________________________________________________________________
-|    Precondició     | El client ha d'estar registrat a PersonalShopper
+|    Precondició     | El client ha d'estar registrat a PersonalShopper          |
 __________________________________________________________________________________
-|   Flux principal   | 1. Seleccionar l'opció "Fer demanat".
-|                    | 2. PersonalShopper elegirà per a tu les 5 peces de roba.
-|                    | 3. Es carregaran 10€ pel servei d'assessorament.
-|                    | - 3.1 Aquests 10€ es descomptaran de l'import total de 
-|                    |       la teva compra sempre que et quedis amb al-
-|                    |       menys una peça.
-|                    | 4. [Es aixó un pas del flux?] A més, a la caixa trobaràs 
-|                    | fitxes amb looks de com combinar cada peça i una nota 
-|                    | amb consells del teu Personal Shopper.
+|   Flux principal   | 1. Seleccionar l'opció "Fer demanat".                     |
+|                    | 2. PersonalShopper elegirà per a tu les 5 peces de roba.  |
+|                    | 3. Es carregaran 10€ pel servei d'assessorament.          |
+|                    | - 3.1 Aquests 10€ es descomptaran de l'import total de    |
+|                    |       la teva compra sempre que et quedis amb al-         |
+|                    |       menys una peça.                                     |
+|                    | 4. [Es aixó un pas del flux?] A més, a la caixa trobaràs  |
+|                    | fitxes amb looks de com combinar cada peça i una nota     |
+|                    | amb consells del teu Personal Shopper.                    |
 __________________________________________________________________________________
-| Fluxos alternatius | - Primera comanda: no es cobren els 10€
-|                    | -[TODO] Possibles errors de cobrament.
+| Fluxos alternatius | - Primera comanda: no es cobren els 10€                   |
+|                    | -[TODO] Possibles errors de cobrament.                    |
 __________________________________________________________________________________
-| Req. no funcionals | Com a client registrat vull poder fer la meva comanda 
-|                    | assistit per un personal Shopper per tal de estaliviar-me
-|                    | pensar gaire en el meu look.
+| Req. no funcionals | Com a client registrat vull poder fer la meva comanda     |
+|                    | assistit per un personal Shopper per tal de estaliviar-me |
+|                    | pensar gaire en el meu look.                              |
 __________________________________________________________________________________
