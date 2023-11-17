@@ -6,9 +6,9 @@
 |      Client     | Canviar PersonalShopper.                                |
 |      Client     | Donar d'alta métode de pagament.                        |
 |      Client     | Demanar les dades que es tenen enmagatzemades d'ell.    |
-|      Client     | Demanar l'eliminazió de les dades enmagatzemades.       |
+|      Client     | Demanar l'eliminació de les dades enmagatzemades.       |
 |      Client     | Indica per qué está retornant un dels productes.        |
 |      Client     | Es queda els 5 productes.                               |
-| PersonalShopper | Selecciona 5 prodcutes per a un client.                 |
+| PersonalShopper | Selecciona 5 productes per a un client.                 |
 | PersonalShopper | Canviar un producte seleccionat que no está disponible. |
 ————————————————————————————————————————————————————————————————————————————— 
