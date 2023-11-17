@@ -5,7 +5,7 @@ ________________________________________________________________________________
 __________________________________________________________________________________
 |       Actors       | Client, PersonalShopper                                   |
 __________________________________________________________________________________
-|    Precondició     | El client ha d'estar registrat a PersonalShopper          |
+|    Precondició     | El client ha d'estar registrat a MyPersonalShopper        |
 __________________________________________________________________________________
 |   Flux principal   | 1. Seleccionar l'opció "Fer demanat".                     |
 |                    | 2. PersonalShopper elegirà per a tu les 5 peces de roba.  |
