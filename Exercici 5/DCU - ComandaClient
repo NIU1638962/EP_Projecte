@@ -18,7 +18,9 @@ ________________________________________________________________________________
 |                    | amb consells del teu Personal Shopper.                    |
 __________________________________________________________________________________
 | Fluxos alternatius | - Primera comanda: no es cobren els 10€                   |
-|                    | -[TODO] Possibles errors de cobrament.                    |
+|                    | -[TODO] Possibles errors de cobrament                     |
+|                    | (Escenari possible: Tornar a refer la comanda             |
+|                    | (Escenari possible 2): Triar un altre mètode pagament     |
 __________________________________________________________________________________
 | Req. no funcionals | Com a client registrat vull poder fer la meva comanda     |
 |                    | assistit per un personal Shopper per tal de estaliviar-me |
