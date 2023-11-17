@@ -10,5 +10,5 @@
 |      Client     | Indica per què està retornant un dels productes.        |
 |      Client     | Es queda els 5 productes.                               |
 | PersonalShopper | Selecciona 5 productes per a un client.                 |
-| PersonalShopper | Canviar un producte seleccionat que no está disponible. |
+| PersonalShopper | Canviar un producte seleccionat que no està disponible. |
 ————————————————————————————————————————————————————————————————————————————— 
