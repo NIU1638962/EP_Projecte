@@ -1,0 +1,20 @@
+__________________________________________________________________________________
+|       Versió       | 1.0                                                       |
+__________________________________________________________________________________
+|     Descripció     | Devolució d'un producte                                   |
+__________________________________________________________________________________
+|   Actor principal  | Client                                                    |
+__________________________________________________________________________________
+|       Àmbit        | Aplicació MyPersonalShopper (sistema)                     |
+__________________________________________________________________________________
+|  Nivell d'objectiu | Usuari                                                    |
+__________________________________________________________________________________
+|    Precondició     | El client ha d'haver realitzat una comanda                |
+__________________________________________________________________________________
+|   Flux principal   | 1. Seleccionar opció "Devolució producte"                 |
+|                    | 1.1. Triar quins productes de la comanda retornar         |
+|                    | 1.2. Proporcionar motiu de la devolució                   |
+__________________________________________________________________________________
+| Fluxos alternatius | - El producte ja s'ha retornat, al qual la aplicació no   |
+|                    |   pot deixar mostrar l'opció per aquell producte          |
+__________________________________________________________________________________
