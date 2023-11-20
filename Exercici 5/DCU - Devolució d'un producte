@@ -19,4 +19,6 @@ ________________________________________________________________________________
 __________________________________________________________________________________
 | Fluxos alternatius | - El producte ja s'ha retornat, al qual el sistema no     |
 |                    |   pot deixar mostrar l'opció per aquell producte          |
+|                    | - El client no confirma la devolució, al qual torna a fer |
+|                    | el procediment                                            |
 __________________________________________________________________________________
