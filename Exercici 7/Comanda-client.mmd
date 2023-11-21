@@ -5,9 +5,7 @@ sequenceDiagram
     C->>S: Seleccionar l'opció "Fer demanat"
     activate PS
     S->>PS: Avisar que el client vol fer un demanat
-    critical
-        PS->>S: Seleccionar les 5 peces
-    end
+    PS->>S: Seleccionar les 5 peces
     PS->>S: Agregar una nota sobre com combinar les peces
     PS->>S: Afegir fitxes amb looks
     deactivate PS
