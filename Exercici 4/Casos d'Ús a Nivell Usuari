@@ -10,7 +10,7 @@
 |      Client     | Demanar l'eliminació de les dades enmagatzemades.       |
 |      Client     | Devolució de productes.                                 |
 |      Client     | Selecció de productes recomenats                        |
-|      Client     | Iniciar chat amb Personal Shopper                        |
+|      Client     | Iniciar chat amb Personal Shopper                       |
 | PersonalShopper | Selecciona 5 productes per a un client.                 |
 | PersonalShopper | Canviar un producte seleccionat que no està disponible. |
 ————————————————————————————————————————————————————————————————————————————— 
