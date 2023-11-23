@@ -16,7 +16,11 @@ classDiagram
     }
     class PersonalShopper{
         - data_alta : str
-        - clients_assignats : list[str]
+        - clients_assignats : list[Client]
+    }
+    class Review{
+        - puntuacio : int
+        - comentari : str
     }
     %%Canvis de la classe Producte de l'exercici anterior: se li ha afegit l'atribut "revisions"
     class Producte{
@@ -26,8 +30,9 @@ classDiagram
     Usuari <|-- PersonalShopper
     Usuari <|-- Client
     PersonalShopper o-- Client  
+    Producte "1" *-- "1..*"Review
+    Client "1" *-- "1..*"Review
     
-
-    PersonalShopper: +Donar_alta()
-    Client: +Donar_alta()
+    Usuari: +Donar_alta()
     Client: +Fer_comanda()
+    Client: +Avalua_producte()
