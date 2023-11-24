@@ -1,8 +1,0 @@
-Requisit: Mètode de pagament
-
-Descripció: Els mètodes de pagament vàlids són: targeta de dèbit, crèdit, American Express i PayPal. Caldrà doncs utilitzar els
-sistemes que li donin suport.
-
-Tipus: Requisits sobre les interfícies externes.
-
-Stakeholder: Alba Torres
