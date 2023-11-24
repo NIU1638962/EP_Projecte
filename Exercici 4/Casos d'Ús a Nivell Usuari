@@ -6,8 +6,8 @@
 |      Client     | Canviar PersonalShopper.                                |
 |      Client     | Fer demanat.                                            |
 |      Client     | Donar d'alta mètode de pagament.                        |
-|      Client     | Demanar les dades que es tenen emmagatzemades d'ell.    |
-|      Client     | Demanar l'eliminació de les dades emmagatzemades.       |
+|      Client     | Canviar les dades.                                      |
+|      Client     | Donar-se de baixa.                                      |
 |      Client     | Devolució de productes.                                 |
 |      Client     | Selecció de productes recomanats.                       |
 |      Client     | Iniciar xat amb PersonalShopper.                        |
