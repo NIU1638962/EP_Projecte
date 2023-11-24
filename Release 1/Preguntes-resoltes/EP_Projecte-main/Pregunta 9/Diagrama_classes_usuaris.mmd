@@ -1,0 +1,38 @@
+---
+title: Diagrama Classes Usuaris
+---
+
+classDiagram
+    class Usuari {
+        - NIF : str
+        - nom : str
+        - cognoms : str
+        - correu : str
+        - contrasenya : str
+    }
+    class Client{
+        - telefon : int
+        - postal_adress : str
+    }
+    class PersonalShopper{
+        - data_alta : str
+        - clients_assignats : list[Client]
+    }
+    class Review{
+        - puntuacio : int
+        - comentari : str
+    }
+    %%Canvis de la classe Producte de l'exercici anterior: se li ha afegit l'atribut "revisions"
+    class Producte{
+        + revisions : list[Review]
+    }
+    
+    Usuari <|-- PersonalShopper
+    Usuari <|-- Client
+    PersonalShopper o-- Client  
+    Producte "1" *-- "1..*"Review
+    Client "1" *-- "1..*"Review
+    
+    Usuari: +Donar_alta()
+    Client: +Fer_comanda()
+    Client: +Avalua_producte()

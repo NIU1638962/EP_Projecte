@@ -1,0 +1,11 @@
+Cas d'ús: Realitzar una comanda mensual amb enviaments automàtics.
+
+Requisit 1: Com a client de MyPersonalShopper, vull donar d'alta el meu mètode de pagament preferit, per tal
+de poder pagar en un clic sempre i quan hagi fet una comanda.
+
+Requisit 2: Com a usuari de MyPersonalShopper, vull poder triar les peces que m'agradi i enviar la resta de
+tornada, i se m'apliqui un 25% de descompte quan em quedi amb les cinc peces.
+
+Dependència: El requisit 2 depèn del requisit 1 ja que el descompte només es podrà aplicar un cop el client
+hagi decidit un mètode de pagament. Un cop el client hagi especificat el mètode de pagament, se li podrà descomptar
+el 25% si el client es queda amb les 5 peces.

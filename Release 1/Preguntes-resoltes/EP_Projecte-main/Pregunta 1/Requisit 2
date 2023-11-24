@@ -1,0 +1,9 @@
+Requisit: Reglament General de la Protecció de Dades
+
+Descripció: Una característica fonamental que hem de tenir en compte quan vam implementar aquesta part és l'aplicació del 'Reglament General de la Protecció de Dades, en el qual es controla i monitoritza
+l'emmagatzematge, processament i divulgació dels registres personals dels individus. Aquest reglament, que és d'obligat compliment, estableix que totes les dades personals han de ser confidencials i no es poden
+distribuir a entitats externes sense un consentiment explícit del individu afectat.
+
+Tipus: Restricció de disseny (Acompliment d'estàndards)
+
+Stakeholder: Alba Torres 

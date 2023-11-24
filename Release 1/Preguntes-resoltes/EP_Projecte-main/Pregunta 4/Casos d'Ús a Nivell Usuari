@@ -1,0 +1,16 @@
+—————————————————————————————————————————————————————————————————————————————
+|      Actors     | Casos d'Ús                                              |
+—————————————————————————————————————————————————————————————————————————————
+|      Client     | Registrar-se a l'aplicació.                             |
+|      Client     | Emplenar perfil.                                        |
+|      Client     | Canviar PersonalShopper.                                |
+|      Client     | Fer demanat.                                            |
+|      Client     | Donar d'alta mètode de pagament.                        |
+|      Client     | Canviar les dades.                                      |
+|      Client     | Donar-se de baixa.                                      |
+|      Client     | Devolució de productes.                                 |
+|      Client     | Selecció de productes recomanats.                       |
+|      Client     | Iniciar xat amb PersonalShopper.                        |
+| PersonalShopper | Selecciona 5 productes per a un client.                 |
+| PersonalShopper | Canviar un producte seleccionat que no està disponible. |
+————————————————————————————————————————————————————————————————————————————— 
