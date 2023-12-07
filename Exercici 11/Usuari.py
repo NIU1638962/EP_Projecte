@@ -66,7 +66,7 @@ class Client(Usuari):
         __init__: Inicialització de les instàncies
     """
 
-    def __init__(self, telefon, address):
+    def __init__(self, telefon, adress):
         self.telefon = telefon
-        self.address = address   
+        self.adress = adress   
         

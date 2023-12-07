@@ -52,11 +52,21 @@ v4 = usr4.Donar_alta(True, "P")
 print("1. Comprovar data registrament:", usr.registres["53243153T"].data_alta == date.today().strftime("%d/%m/%Y"))
 
 if usr.registres["53243153T"].data_alta == date.today().strftime("%d/%m/%Y"): comprovador += 1
-
 print("############################")
-if comprovador == 11: print("TOT EN FUNCIONAMENT!")
+
 
 #Test 4: Es genera correctament instància Client
+print("TEST 4: GENERAR CORRECTAMENT CLIENT:")
+v5 = usr5.Donar_alta(True, "C", ["645965549", "Barcelona, Granollers, Carrer Girona, 11"]) 
+print("1. Comprovar telefon:", usr.registres["55245351P"].telefon == "645965549")
+print("2. Comprovar adreça:", usr.registres["55245351P"].adress == "Barcelona, Granollers, Carrer Girona, 11")
+
+if usr.registres["55245351P"].telefon == "645965549": comprovador += 1
+if usr.registres["55245351P"].adress == "Barcelona, Granollers, Carrer Girona, 11": comprovador += 1
+print("############################")
+
+if comprovador == 12: print("TOT EN FUNCIONAMENT!")
+
 
 
 
