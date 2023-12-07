@@ -1,5 +1,5 @@
 "Inicialitzem un diccionari contenint tots els usuaris registrats"
-import datetime 
+from datetime import date
 global registres 
 registres = dict()
 
@@ -18,22 +18,30 @@ class Usuari():
         self.correu = str(correu)
         self.pwd = str(pwd)
         
-    def Donar_alta(self): 
+    def Donar_alta(self, test=False, tipus_usuari=None, dades_adicionals=None): 
         "Retorna si s'ha donat d'alta i en cas que sigui Personal Shopper la data del registre"
         "Intentem evitar usuaris duplicats (a partir del seu NIF)"
         if self.NIF not in registres:
-                        
-            resposta = str(input("Vols registrar-te com a Client (C) o Personal Shopper (P)? "))
-            while (resposta != "C" and resposta != "c")  and (resposta != "P" and resposta != "p"):
-                resposta = str(input("Opció no vàlida, torna a seleccionar la opció (Client -> C, Personal Shopper -> P) "))
-        
+            if not test:       
+                resposta = str(input("Vols registrar-te com a Client (C) o Personal Shopper (P)? "))
+                while (resposta != "C" and resposta != "c")  and (resposta != "P" and resposta != "p"):
+                    resposta = str(input("Opció no vàlida, torna a seleccionar la opció (Client -> C, Personal Shopper -> P) "))
+
+            else:
+                resposta = tipus_usuari 
+
             if (resposta == "P") or (resposta == "p"):
-                dia_actual = datetime.date.today().strftime("%d")
+                dia_actual = date.today().strftime("%d/%m/%Y")
                 classe = PersonalShopper(dia_actual, list())
             
             else:
-                input_telefon = input("Posa el teu telèfon: ")
-                input_adress = input("Col·loca la teva adreça física: ")
+                if not test:
+                    input_telefon = input("Posa el teu telèfon: ")
+                    input_adress = input("Col·loca la teva adreça física: ")
+                else:
+                    input_telefon = dades_adicionals[0]
+                    input_adress = dades_adicionals[1]
+
                 classe = Client(input_telefon, input_adress)
             
             registres[self.NIF] = classe
@@ -50,7 +58,6 @@ class PersonalShopper(Usuari):
     def __init__(self, data_alta, clients_assignats):
         self.data_alta = data_alta
         self.clients_assignats = clients_assignats
-
 
 class Client(Usuari):
     """

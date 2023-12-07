@@ -1,5 +1,5 @@
 import Usuari as usr
-
+from datetime import date
 
 print("############################")
 print("TEST CLASS USUARI:")
@@ -8,6 +8,9 @@ print("############################")
 usr1 = usr.Usuari("47970268L", "Guillem", "Garcia Dausà", "ggarciadausa@gmail.com", "contrasenya123")
 usr2 = usr.Usuari("47970268L", "Martí", "Llinés Viñals", "martillines@gmail.com", "contrasenya423")
 usr3 = usr.Usuari("47970268N", "Guillem", "Garcia Dausà", "gguillem@gmail.com", "contrasenya213")
+usr4 = usr.Usuari("53243153T", "Josep", "Martinez", "Jmartinez@gmail.com", "contrasenya44413")
+usr5 = usr.Usuari("55245351P", "Asiel", "López", "asiellopez@gmail.com", "contrasenya44414")
+
 comprovador = 0
 
 #Test 1: Comprovar que un usuari es genera correctament
@@ -30,9 +33,9 @@ print("############################")
 
 #Test 2: Es dona d'alta correctament un client
 print("TEST 2: DONAR D'ALTA CORRECTAMENT:")
-v1 = usr1.Donar_alta() 
-v2 = usr2.Donar_alta()
-v3 = usr3.Donar_alta()
+v1 = usr1.Donar_alta(True, "P") 
+v2 = usr2.Donar_alta(True, "p")
+v3 = usr3.Donar_alta(True, "P")
 print("1. Donar alta correctament Usr1:", v1 == True)
 print("2. Donar alta incorrectament Usr2:", v2  == False)
 print("3. Donar alta correctament Usr3:", v3 == True)
@@ -42,8 +45,18 @@ if v1 == True: comprovador += 1
 if v2 == False: comprovador += 1
 if v3 == True: comprovador += 1
 print("############################")
-if comprovador == 9: print("TOT EN FUNCIONAMENT!")
 
+#Test 3: Es genera correctament instància PersonalShopper
+print("TEST 3: GENERAR CORRECTAMENT PERSONALSHOPPER:")
+v4 = usr4.Donar_alta(True, "P") 
+print("1. Comprovar data registrament:", usr.registres["53243153T"].data_alta == date.today().strftime("%d/%m/%Y"))
+
+if usr.registres["53243153T"].data_alta == date.today().strftime("%d/%m/%Y"): comprovador += 1
+
+print("############################")
+if comprovador == 11: print("TOT EN FUNCIONAMENT!")
+
+#Test 4: Es genera correctament instància Client
 
 
 
