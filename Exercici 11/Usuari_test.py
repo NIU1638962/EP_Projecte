@@ -88,10 +88,23 @@ if emp2 == False: comprovador += 1
 print("############################")
 
 #Test 7: Mètode Fer_Comanda
+print("TEST 7: MÈTODE FER_COMANDA") 
+mp1 = usr.registres["55245351P"].Afegir_Metode_Pagament(["5423 2311 7187 2189", "Enric", "Gonzalez", "323", 245])
+mp2 = usr.registres["55245351P"].Afegir_Metode_Pagament(["7223 1323 7853 5376", "Enric", "Gonzalez", "121", 7])
 
+cmd1 = usr.registres["55245351P"].Fer_Comanda(True, 1)
+print("1. Es realitza correctament primera comanda:", usr.registres["55245351P"].pagaments["5423 2311 7187 2189"][-1] == 245)
 
-if comprovador == 16: print("TOT EN FUNCIONAMENT!")
-else: print("ALGUNA COMPROVACIÓ NO ÉS CORRECTE")
+cmd2 = usr.registres["55245351P"].Fer_Comanda(True, 2)
+print("2. No es pot realitzar segona comanda:", cmd2 == False)
+
+if usr.registres["55245351P"].pagaments["5423 2311 7187 2189"][-1] == 245: comprovador += 1
+if cmd2 == False: comprovador += 1
+
+print("############################")
+
+if comprovador == 18: print("EVALUACIÓ DELS TEST: TOT EN FUNCIONAMENT!")
+else: print("EVALUACIÓ DELS TEST: ALGUNA COMPROVACIÓ NO ÉS CORRECTE")
 
 
 
