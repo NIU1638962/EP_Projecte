@@ -65,8 +65,33 @@ if usr.registres["55245351P"].telefon == "645965549": comprovador += 1
 if usr.registres["55245351P"].adress == "Barcelona, Granollers, Carrer Girona, 11": comprovador += 1
 print("############################")
 
-if comprovador == 12: print("TOT EN FUNCIONAMENT!")
+#Test 5: Mètode Afegir_Metode_Pagament
+print("TEST 5: MÈTODE AFEGIR_METODE_PAGAMENT") 
+mp1 = usr.registres["55245351P"].Afegir_Metode_Pagament(["5423 2311 7187 2189", "Enric", "Gonzalez", "323", 245])
+print("1. Format correcte:", usr.registres["55245351P"].pagaments == {'5423 2311 7187 2189': ['Enric', 'Gonzalez', '323', 245]})
+mp2 = usr.registres["55245351P"].Afegir_Metode_Pagament(["5423 2311 7187 2189", "Enric", "Gonzalez", "323", 245])
+print("2. Introduir mateixa targeta:", mp2 == False)
 
+if usr.registres["55245351P"].pagaments == {'5423 2311 7187 2189': ['Enric', 'Gonzalez', '323', 245]}: comprovador += 1
+if mp2 == False: comprovador += 1
+print("############################")
+
+#Test 6: Mètode Esborrar_Metode_Pagament
+print("TEST 6: MÈTODE ESBORRAR_METODE_PAGAMENT") 
+emp1 = usr.registres["55245351P"].Esborrar_Metode_Pagament("5423 2311 7187 2189")
+print("1. Esborrat correctament:", usr.registres["55245351P"].pagaments == {})
+emp2 = usr.registres["55245351P"].Esborrar_Metode_Pagament("5423 2311 7187 2189")
+print("2. Esborrar targeta inexistent:", emp2 == False)
+
+if usr.registres["55245351P"].pagaments == {}: comprovador += 1
+if emp2 == False: comprovador += 1
+print("############################")
+
+#Test 7: Mètode Fer_Comanda
+
+
+if comprovador == 16: print("TOT EN FUNCIONAMENT!")
+else: print("ALGUNA COMPROVACIÓ NO ÉS CORRECTE")
 
 
 

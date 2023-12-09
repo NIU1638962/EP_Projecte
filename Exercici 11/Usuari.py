@@ -58,15 +58,54 @@ class PersonalShopper(Usuari):
     def __init__(self, data_alta, clients_assignats):
         self.data_alta = data_alta
         self.clients_assignats = clients_assignats
+    
+    def Consultar_Clients(self):
+        print(self.clients_assignats)
+    
+    def Assignar_Productes_Cataleg(self):
+        "input: Client que vols assignar"
+        "Assignar els productes"
+        pass
 
 class Client(Usuari):
     """
     Class Client: Es desen les dades de tot Client
     Mètodes:
         __init__: Inicialització de les instàncies
+        Fer_Comanda: El client realitza una comanda. Com a condició s'ha de tenir un mètode de pagament amb els diners suficients per realitzar el import.
+        Afegir_Metode_Pagament: S'ha d'entrar un llistat de l'informació de la targeta [IDENTIFICADOR, NOM, COGNOM, DATA_CADUCITAT, CVC, DINERS] i guardar-ho internament. 
     """
 
     def __init__(self, telefon, adress):
         self.telefon = telefon
         self.adress = adress   
+        self.pagaments = dict()
+
+    def Fer_Comanda(self):
+        if self.pagaments != {}:
+            print("Selecciona un mètode de pagament:")
+            print("==================================")
+            for index,pagament in enumerate(self.pagaments):
+                print(str(index+1) + ". " + str(pagament))
+
+        else:
+            raise Exception("Has de tenir d'alta algun mètode de pagament")
+
+    def Afegir_Metode_Pagament(self, dades_targeta):
+        if dades_targeta[0] not in self.pagaments:
+            self.pagaments[dades_targeta[0]] = dades_targeta[1:]
+            return True
+        return False
+
+    def Esborrar_Metode_Pagament(self, identificador):
+        if identificador in self.pagaments:
+            del(self.pagaments[identificador])
+            return True
+        return False
         
+    def Retornar_Producte(self):
+        "Seleccionar comanda"
+        "Seleccionar producte"
+        "Input del motiu"
+        pass
+    
