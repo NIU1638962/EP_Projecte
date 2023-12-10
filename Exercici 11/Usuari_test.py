@@ -100,10 +100,24 @@ print("2. No es pot realitzar segona comanda:", cmd2 == False)
 
 if usr.registres["55245351P"].pagaments["5423 2311 7187 2189"][-1] == 245: comprovador += 1
 if cmd2 == False: comprovador += 1
-
 print("############################")
 
-if comprovador == 18: print("EVALUACIÓ DELS TEST: TOT EN FUNCIONAMENT!")
+#Test 8: Mètode Canviar_Personal_Shopper
+print("TEST 8: MÈTODE Canviar_Personal_Shopper") 
+ps1 = usr.registres["55245351P"].personalShopper
+usr.registres["55245351P"].Canviar_Personal_Shopper(True, 's')
+ps2 = usr.registres["55245351P"].personalShopper
+usr.registres["55245351P"].Canviar_Personal_Shopper(True, 'n')
+ps3 = usr.registres["55245351P"].personalShopper
+
+print("1. Es canvia correctament:", ps1 != ps2) 
+print("2. No es canvia de Personal Shopper:", ps2 == ps3)
+
+if ps1 != ps2: comprovador += 1
+if ps2 == ps3: comprovador += 1
+print("############################")
+
+if comprovador == 20: print("EVALUACIÓ DELS TEST: TOT EN FUNCIONAMENT!")
 else: print("EVALUACIÓ DELS TEST: ALGUNA COMPROVACIÓ NO ÉS CORRECTE")
 
 
