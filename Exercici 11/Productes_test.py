@@ -36,6 +36,3 @@ except:
 else:
     print("Producte creat [ERROR]")
     sys.exit()
-
-print("=================================")
-print("TEST 2: CREAR UN FALS PRODUCTE\nResultat:", end= " ")

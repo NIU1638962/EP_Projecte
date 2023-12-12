@@ -1,4 +1,5 @@
 import Usuari as usr
+import Productes as pr
 from datetime import date
 
 print("############################")
@@ -117,8 +118,46 @@ if ps1 != ps2: comprovador += 1
 if ps2 == ps3: comprovador += 1
 print("############################")
 
-if comprovador == 20: print("EVALUACIÓ DELS TEST: TOT EN FUNCIONAMENT!")
+#Test 9: Mètode Assignar_Productes_Client
+print("TEST 9: MÈTODE Canviar_Personal_Shopper") 
+
+pr1 = pr.Producte("0000A", "pantalons", 12, "Descripció sobre pantalons")
+pr2 = pr.Producte("0000B", "jersei", 13, "Descripció sobre samarreta")
+pr3 = pr.Producte("0000C", "camisa", 15, "Descripció sobre camisa")
+pr4 = pr.Producte("0000D", "jaqueta", 20, "Descripció jaqueta")
+pr5 = pr.Producte("0000E", "mitjons", 5, "Mitjons de ratlles")
+
+llistat1 = [pr1, pr2, pr3]
+llistat2 = [pr1, pr2, pr3, pr4, pr5]
+llistat3 = [pr1, pr2, pr3, pr1, pr2, pr3]
+
+cmp1 = usr.registres["55245351P"].personalShopper.Assignar_Productes_Client(usr.registres["55245351P"], llistat1)
+cmp2 = usr.registres["55245351P"].personalShopper.Assignar_Productes_Client(usr.registres["55245351P"], llistat3)
+cmp3 = usr.registres["55245351P"].personalShopper.Assignar_Productes_Client(usr.registres["55245351P"], llistat2)
+cmp4 = usr.registres["55245351P"].personalShopper.Assignar_Productes_Client(usr.registres["55245351P"], llistat2)
+
+print("1. Falta de productes:", cmp1 == False)
+print("2. Productes repetits", cmp2 == False)
+print("3. Es realitza correctament la assignació:", cmp3 == True)
+print("4. No té pendent cap comanda:", cmp4 == False)
+
+if not cmp1: comprovador += 1
+if not cmp2: comprovador += 1
+if cmp3: comprovador += 1
+if not cmp4: comprovador += 1
+print("############################")
+
+#Test 10: Mètode Retornar_Producte
+usr.registres["55245351P"].Retornar_Producte(True, [1,1, "Perquè no és de la meva talla"])
+print("1. Retornar producte correctament:", len(usr.registres["55245351P"].comandes[1]) == 4)
+
+if len(usr.registres["55245351P"].comandes[1]) == 4: comprovador += 1
+print("############################")
+
+print("------------------------------------------------------------------")
+if comprovador == 25: print("EVALUACIÓ DELS TEST: TOT EN FUNCIONAMENT!")
 else: print("EVALUACIÓ DELS TEST: ALGUNA COMPROVACIÓ NO ÉS CORRECTE")
+print("------------------------------------------------------------------")
 
 
 

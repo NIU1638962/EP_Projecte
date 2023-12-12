@@ -7,6 +7,7 @@ registres = dict()
 personal_shoppers = list()
 
 class Usuari():
+    __slots__= ('NIF', 'nom', 'cognoms', 'correu', 'pwd')
     """
     Class Usuari: Es desen les dades de tota persona que es vulgui registrar a l'aplicació
     Mètodes:
@@ -56,10 +57,13 @@ class Usuari():
         return False
 
 class PersonalShopper(Usuari):
+    __slots__= ('data_alta', 'clients_assignats')
     """
     Class Personal Shopper: Es desen les dades de tot Personal Shopper
     Mètodes:
         __init__: Inicialització de les instàncies
+        Consultar_Clients: Veure quins clients té a disposició
+        Assignar_Productes_Client: Fer una selecció de productes per recomenar-li al client.
     """
 
     def __init__(self, data_alta, clients_assignats):
@@ -72,12 +76,15 @@ class PersonalShopper(Usuari):
         for index,client in enumerate(self.clients_assignats):
             print(str(index+1) + ". " + str(client.NIF) + " - " + str(client.nom) + " " + str(client.cognoms))
     
-    def Assignar_Productes_Cataleg(self):
-        "input: Client que vols assignar"
-        "Assignar els productes --> Fer primer la classe Producte"
-        pass
+    def Assignar_Productes_Client(self, client, productes):
+        #Comprovem que el client ha fet una comanda, on encara no l'hem assignat productes
+        if client.comandes[len(client.comandes)] == [] and len(set(productes)) == 5:
+            client.comandes[len(client.comandes)] = productes
+            return True
+        return False        
 
 class Client(Usuari):
+    __slots__= ('telefon', 'adress', 'personalShopper', 'pagaments', 'comandes', 'blacklist')
     """
     Class Client: Es desen les dades de tot Client
     Mètodes:
@@ -85,6 +92,8 @@ class Client(Usuari):
         Fer_Comanda: El client realitza una comanda. Com a condició s'ha de tenir un mètode de pagament amb els diners suficients per realitzar el import.
         Afegir_Metode_Pagament: S'ha d'entrar un llistat de l'informació de la targeta [IDENTIFICADOR, NOM, COGNOM, DATA_CADUCITAT, CVC, DINERS] i guardar-ho internament. 
         Esborrar_Metode_Pagament: Esborrar la targeta a partir de tenir el seu IDENTIFICADOR
+        Retornar_Producte: Devolució d'un producte d'una comanda.
+        Canviar_PersonalShopper: Mètode per canviar el PersonalShopper assignat. De manera permanent no es podran assignar-te els anteriors.
     """
 
     def __init__(self, telefon, adress, personalShopper):
@@ -139,11 +148,58 @@ class Client(Usuari):
             return True
         return False
         
-    def Retornar_Producte(self):
-        "Seleccionar comanda"
+    def Retornar_Producte(self, test=False, input_usuari_test=None):
+        "Seleccionar una comanda"
+        diccionari_temporal1 = dict()
+        print("Selecciona una de les comandes realitzades:")
+        print("==================================")
+        for index,comanda in enumerate(self.comandes):
+            print(str(index+1) + ". Comanda " + str(comanda))
+            diccionari_temporal1[index+1] = comanda
+        
+        if not test:
+            print()
+            input_usuari = int(input("Selecciona una opció del 1 al " + str(len(self.comandes)) + ": "))
+            while input_usuari < 1 and input_usuari > len(self.comandes):
+                input_usuari = int(input("Torna a seleccionar una opció del 1 al " + str(len(self.comandes)) + ": "))
+
+        else:
+            print("Comanda seleccionada:", input_usuari_test[0])
+            input_usuari = input_usuari_test[0]
+            
+        print()
+        comanda = self.comandes[input_usuari]
+    
         "Seleccionar producte"
-        "Input del motiu"
-        pass
+        diccionari_temporal2 = dict()
+        print("Selecciona uns dels productes comprats:")
+        print("==================================")
+        for index,producte in enumerate(comanda):
+            print(str(index+1) + ". Producte " + str(producte.codi) + " (" + str(producte.nom) + ")")
+            diccionari_temporal2[index+1] = producte
+        
+        if not test:
+            input_usuari = int(input("Selecciona una opció del 1 al " + str(len(diccionari_temporal2)) + ": "))
+            while input_usuari < 1 and input_usuari > len(self.comandes):
+                input_usuari = int(input("Torna a seleccionar una opció del 1 al " + str(len(diccionari_temporal2)) + ": "))
+
+        else:
+            print()
+            print("Producte seleccionat:", input_usuari_test[1])
+            input_usuari = input_usuari_test[1]
+            
+        print()
+        producte = comanda[input_usuari-1]
+        
+        "Input del motiu de devolució"
+        if not test:
+            motiu_devolucio = input("Descriu el per què vol retornar el producte: ")
+        else:
+            print("Motiu de devolució:", input_usuari_test[2])
+            motiu_devolucio = input_usuari_test[2]
+
+        "Solament es treu el producte de la comanda (No es retorna els diners fins que es retorni correctament la peaç)"
+        self.comandes[input_usuari].remove(producte)
 
     def Canviar_Personal_Shopper(self, test = False, input_test = None):
         if not test:

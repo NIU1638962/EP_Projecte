@@ -1,10 +1,10 @@
 class Producte():
+    __slots__= ('codi', 'nom', 'preu', 'descripcio', 'valoracions')
     """
     Class Producte: representen els productes que ofereixen els proveïdors.
     Mètodes:
         __init__: inicialització dels atributs de l'instància
         Valora: Afegir una valoració al producte
-
     """
 
     def __init__(self, codi, nom, preu, descripcio):
