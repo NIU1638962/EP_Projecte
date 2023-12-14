@@ -1,27 +1,27 @@
 from datetime import date
 import random
 
-"""
-Inicialitzem un diccionari contenint tots els usuaris registrats. També una
-llista per veure els Personal Shoppers
-"""
+
+#Inicialitzem un diccionari contenint tots els usuaris registrats. També una llista per veure els Personal Shoppers
 
 global registres, personal_shoppers
 registres = dict()
 personal_shoppers = list()
 
-
 class Usuari:
     __slots__ = ("NIF", "nom", "cognoms", "correu", "pwd")
-    """
-    Class Usuari: Es desen les dades de tota persona que es vulgui registrar a
-    l'aplicació.
-    Mètodes:
-        __init__: Inicialització de les instàncies
-        Donar_alta: Registrar-se a l'aplicació
-    """
 
     def __init__(self, NIF, nom, cognoms, correu, pwd):
+        """
+        Inicialització de les instàncies de la classe
+
+        Args:
+            NIF (str): Identificador del usuari
+            nom (str): Nom del usuari
+            cognoms (str): Cognoms del usuari
+            correu (str): Adreça electrònica del usuari
+            pwd (str): Contrasenya del compte
+        """
         self.NIF = str(NIF)
         self.nom = str(nom)
         self.cognoms = str(cognoms)
@@ -31,10 +31,16 @@ class Usuari:
     def Donar_alta(self, test=False, tipus_usuari=None, dades_adicionals=None):
         """
         Retorna si s'ha donat d'alta i en cas que sigui Personal Shopper la
-        data del registre.
-        Intentem evitar usuaris duplicats (a partir del seu NIF)
-        """
+        data del registre. Intentem evitar usuaris duplicats (a partir del seu NIF)
 
+        Args:
+            test (bool, optional): En cas que estem fent un testing de la classe. Defaults to False.
+            tipus_usuari (str, optional): En cas que estem fent un testing, es passa el paràmetre de tipus d'usuari. Defaults to None.
+            dades_adicionals (list, optional): En cas que estem fent un testing, es passa paràmetres en funció del tipus d'usuari. Defaults to None.
+
+        Returns:
+            bool: Indica si s'ha fet correctament el registre.
+        """
         if self.NIF not in registres:
             if not test:
                 resposta = str(
@@ -83,20 +89,22 @@ class Usuari:
 
 class PersonalShopper(Usuari):
     __slots__ = ("data_alta", "clients_assignats")
-    """
-    Class Personal Shopper: Es desen les dades de tot Personal Shopper
-    Mètodes:
-        __init__: Inicialització de les instàncies
-        Consultar_Clients: Veure quins clients té a disposició
-        Assignar_Productes_Client: Fer una selecció de productes per
-        recomenar-li al client.
-    """
 
     def __init__(self, data_alta, clients_assignats):
+        """
+        Inicialització d'instàncies de la classe PersonalShopper
+
+        Args:
+            data_alta (date): Data en que s'ha registrat el PersonalShopper 
+            clients_assignats (list[class Client]): Llista d'usuaris assignats al PersonalShopper
+        """
         self.data_alta = data_alta
         self.clients_assignats = clients_assignats
 
     def Consultar_Clients(self):
+        """_
+        Funcionalitat per veure el llistat de clients 
+        """
         print("CLIENTS ASSIGNATS:")
         print("==============================")
         for index, client in enumerate(self.clients_assignats):
@@ -111,8 +119,16 @@ class PersonalShopper(Usuari):
             )
 
     def Assignar_Productes_Client(self, client, productes):
-        # Comprovem que el client ha fet una comanda, on encara no l'hem
-        # assignat productes
+        """
+        Assignar els productes al clients del PersonalShopper.
+
+        Args:
+            client (Class Client): Client a fer la selecció de productes
+            productes (list[Class Producte]): Llistat de productes per assignar-li 
+
+        Returns:
+            bool: S'ha assignat correctament els productes
+        """
         if (
             client.comandes[len(client.comandes)] == []
             and len(set(productes)) == 5
@@ -131,24 +147,16 @@ class Client(Usuari):
         "comandes",
         "blacklist",
     )
-    """
-    Class Client: Es desen les dades de tot Client
-    Mètodes:
-        __init__: Inicialització de les instàncies
-        Fer_Comanda: El client realitza una comanda. Com a condició s'ha de
-        tenir un mètode de pagament amb els diners suficients per realitzar el
-        import.
-        Afegir_Metode_Pagament: S'ha d'entrar un llistat de l'informació de la
-        targeta [IDENTIFICADOR, NOM, COGNOM, DATA_CADUCITAT, CVC, DINERS] i
-        guardar-ho internament.
-        Esborrar_Metode_Pagament: Esborrar la targeta a partir de tenir el seu
-        IDENTIFICADOR
-        Retornar_Producte: Devolució d'un producte d'una comanda.
-        Canviar_PersonalShopper: Mètode per canviar el PersonalShopper
-        assignat. De manera permanent no es podran assignar-te els anteriors.
-    """
 
     def __init__(self, telefon, adress, personalShopper):
+        """
+        Inicialització de les instàncies
+
+        Args:
+            telefon (str): Telèfon del client per posar-se en contacte
+            adress (str): Adreça física del client
+            personalShopper (class PersonalShopper): PersonalShopper que s'ha assignat
+        """
         self.telefon = telefon
         self.adress = adress
         self.personalShopper = personalShopper
@@ -157,6 +165,18 @@ class Client(Usuari):
         self.blacklist = list()
 
     def Fer_Comanda(self, test=False, input_usuari_test=None):
+        """
+        El client realitza una comanda. Com a condició s'ha de
+        tenir un mètode de pagament amb els diners suficients per realitzar el
+        import.
+
+        Args:
+            test (bool, optional): En cas de fer testing. Defaults to False.
+            input_usuari_test (list(), optional): Inputs del testing. Defaults to None.
+
+        Returns:
+            bool: Si s'ha realitzat correctament la comanda
+        """
         if self.pagaments != {}:
             diccionari_temporal = dict()
             print("Selecciona un mètode de pagament:")
@@ -204,18 +224,44 @@ class Client(Usuari):
         return False
 
     def Afegir_Metode_Pagament(self, dades_targeta):
+        """
+        S'ha d'entrar un llistat de l'informació de la targeta [IDENTIFICADOR, NOM, COGNOM, DATA_CADUCITAT, CVC, DINERS] i
+        guardar-ho internament.
+
+        Args:
+            dades_targeta (list(str)): Llista amb les dades de les targetes de crèdit
+
+        Returns:
+            bool: Si s'ha afegit correctament les dades.
+        """
         if dades_targeta[0] not in self.pagaments:
             self.pagaments[dades_targeta[0]] = dades_targeta[1:]
             return True
         return False
 
     def Esborrar_Metode_Pagament(self, identificador):
+        """
+        Esborrar la targeta a partir de tenir el seu IDENTIFICADOR
+
+        Args:
+            identificador (str): Identificador de la targeta
+
+        Returns:
+            bool: Si s'ha borrat correctament el mètode de pagament
+        """
         if identificador in self.pagaments:
             del self.pagaments[identificador]
             return True
         return False
 
     def Retornar_Producte(self, test=False, input_usuari_test=None):
+        """
+        Devolució d'un producte d'una comanda.
+
+        Args:
+            test (bool, optional): En cas de fer testing. Defaults to False.
+            input_usuari_test (_type_, optional): Inputs del testing. Defaults to None.
+        """
         "Seleccionar una comanda"
         diccionari_temporal1 = dict()
         print("Selecciona una de les comandes realitzades:")
@@ -286,8 +332,8 @@ class Client(Usuari):
             print("Producte seleccionat:", input_usuari_test[1])
             input_usuari = input_usuari_test[1]
 
-        print()
-        producte = comanda[input_usuari - 1]
+        print(self.comandes)
+        producte = comanda[input_usuari-1]
 
         "Input del motiu de devolució"
         if not test:
@@ -305,6 +351,14 @@ class Client(Usuari):
         self.comandes[input_usuari].remove(producte)
 
     def Canviar_Personal_Shopper(self, test=False, input_test=None):
+        """
+        Mètode per canviar el PersonalShopper assignat. 
+        De manera permanent no es podran assignar-te els anteriors.
+
+        Args:
+            test (bool, optional): En cas de fer testing. Defaults to False.
+            input_test (list(), optional): Inputs del testing. Defaults to None.
+        """
         if not test:
             input_usuari = input(
                 "Segur que vol canviar de Personal Shopper (s/n)? "

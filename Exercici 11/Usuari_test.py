@@ -239,6 +239,7 @@ if not cmp4:
 print("############################")
 
 # Test 10: Mètode Retornar_Producte
+usr.registres["55245351P"].comandes[1] = [pr.Producte(i, "Roba", 20, "Camiseta") for i in range (5)]
 usr.registres["55245351P"].Retornar_Producte(
     True, [1, 1, "Perquè no és de la meva talla"]
 )
