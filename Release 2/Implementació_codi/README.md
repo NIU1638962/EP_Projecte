@@ -5,3 +5,4 @@
 3. Usuari_test.py: Testing de les classes de Usuari.py
 4. Productes_test.py: Testing de Productes
 5. Patrons.txt: Documentació dels patrons de disseny implementats en les classes. 
+6. data_base.py: Classe que crea i registra dades en les bases de dades.
