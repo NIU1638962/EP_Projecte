@@ -85,10 +85,10 @@ print("TEST 3: GENERAR CORRECTAMENT PERSONALSHOPPER:")
 V4 = usr4.Donar_alta(True, "P")
 print(
     "1. Comprovar data registrament:",
-    usr.registres["53243153T"].data_alta == date.today().strftime("%d/%m/%Y"),
+    usr4.data_alta == date.today().strftime("%d/%m/%Y"),
 )
 
-if usr.registres["53243153T"].data_alta == date.today().strftime("%d/%m/%Y"):
+if usr4.data_alta == date.today().strftime("%d/%m/%Y"):
     COMPROVADOR += 1
 print("############################")
 
@@ -99,18 +99,18 @@ V5 = usr5.Donar_alta(
     True, "C", ["645965549", "Barcelona, Granollers, Carrer Girona, 11"]
 )
 print(
-    "1. Comprovar telefon:", usr.registres["55245351P"].telefon == "645965549"
+    "1. Comprovar telefon:", usr5.telefon == "645965549"
 )
 print(
     "2. Comprovar adreça:",
-    usr.registres["55245351P"].adress
+    usr5.adress
     == "Barcelona, Granollers, Carrer Girona, 11",
 )
 
-if usr.registres["55245351P"].telefon == "645965549":
+if usr5.telefon == "645965549":
     COMPROVADOR += 1
 if (
-    usr.registres["55245351P"].adress
+    usr5.adress
     == "Barcelona, Granollers, Carrer Girona, 11"
 ):
     COMPROVADOR += 1
@@ -118,20 +118,20 @@ print("############################")
 
 # Test 5: Mètode Afegir_Metode_Pagament
 print("TEST 5: MÈTODE AFEGIR_METODE_PAGAMENT")
-mp1 = usr.registres["55245351P"].Afegir_Metode_Pagament(
+mp1 = usr5.Afegir_Metode_Pagament(
     ["5423 2311 7187 2189", "Enric", "Gonzalez", "323", 245]
 )
 print(
     "1. Format correcte:",
-    usr.registres["55245351P"].pagaments
+    usr5.pagaments
     == {"5423 2311 7187 2189": ["Enric", "Gonzalez", "323", 245]},
 )
-mp2 = usr.registres["55245351P"].Afegir_Metode_Pagament(
+mp2 = usr5.Afegir_Metode_Pagament(
     ["5423 2311 7187 2189", "Enric", "Gonzalez", "323", 245]
 )
 print("2. Introduir mateixa targeta:", mp2 is False)
 
-if usr.registres["55245351P"].pagaments == {
+if usr5.pagaments == {
     "5423 2311 7187 2189": ["Enric", "Gonzalez", "323", 245]
 }:
     COMPROVADOR += 1
@@ -141,16 +141,16 @@ print("############################")
 
 # Test 6: Mètode Esborrar_Metode_Pagament
 print("TEST 6: MÈTODE ESBORRAR_METODE_PAGAMENT")
-emp1 = usr.registres["55245351P"].Esborrar_Metode_Pagament(
+emp1 = usr5.Esborrar_Metode_Pagament(
     "5423 2311 7187 2189"
 )
-print("1. Esborrat correctament:", usr.registres["55245351P"].pagaments == {})
-emp2 = usr.registres["55245351P"].Esborrar_Metode_Pagament(
+print("1. Esborrat correctament:", usr5.pagaments == {})
+emp2 = usr5.Esborrar_Metode_Pagament(
     "5423 2311 7187 2189"
 )
 print("2. Esborrar targeta inexistent:", emp2 is False)
 
-if usr.registres["55245351P"].pagaments == {}:
+if usr5.pagaments == {}:
     COMPROVADOR += 1
 if emp2 is False:
     COMPROVADOR += 1
@@ -158,23 +158,23 @@ print("############################")
 
 # Test 7: Mètode Fer_Comanda
 print("TEST 7: MÈTODE FER_COMANDA")
-mp1 = usr.registres["55245351P"].Afegir_Metode_Pagament(
+mp1 = usr5.Afegir_Metode_Pagament(
     ["5423 2311 7187 2189", "Enric", "Gonzalez", "323", 245]
 )
-mp2 = usr.registres["55245351P"].Afegir_Metode_Pagament(
+mp2 = usr5.Afegir_Metode_Pagament(
     ["7223 1323 7853 5376", "Enric", "Gonzalez", "121", 7]
 )
 
-cmd1 = usr.registres["55245351P"].Fer_Comanda(True, 1)
+cmd1 = usr5.Fer_Comanda(True, 1)
 print(
     "1. Es realitza correctament primera comanda:",
-    usr.registres["55245351P"].pagaments["5423 2311 7187 2189"][-1] == 245,
+    usr5.pagaments["5423 2311 7187 2189"][-1] == 245,
 )
 
-cmd2 = usr.registres["55245351P"].Fer_Comanda(True, 2)
+cmd2 = usr5.Fer_Comanda(True, 2)
 print("2. No es pot realitzar segona comanda:", cmd2 is False)
 
-if usr.registres["55245351P"].pagaments["5423 2311 7187 2189"][-1] == 245:
+if usr5.pagaments["5423 2311 7187 2189"][-1] == 245:
     COMPROVADOR += 1
 if cmd2 is False:
     COMPROVADOR += 1
@@ -182,11 +182,11 @@ print("############################")
 
 # Test 8: Mètode Canviar_Personal_Shopper
 print("TEST 8: MÈTODE Canviar_Personal_Shopper")
-ps1 = usr.registres["55245351P"].personalShopper
-usr.registres["55245351P"].Canviar_Personal_Shopper(True, "s")
-ps2 = usr.registres["55245351P"].personalShopper
-usr.registres["55245351P"].Canviar_Personal_Shopper(True, "n")
-ps3 = usr.registres["55245351P"].personalShopper
+ps1 = usr5.personalShopper
+usr5.Canviar_Personal_Shopper(True, "s")
+ps2 = usr5.personalShopper
+usr5.Canviar_Personal_Shopper(True, "n")
+ps3 = usr5.personalShopper
 
 print("1. Es canvia correctament:", ps1 != ps2)
 print("2. No es canvia de Personal Shopper:", ps2 == ps3)
@@ -210,17 +210,17 @@ llistat1 = [pr1, pr2, pr3]
 llistat2 = [pr1, pr2, pr3, pr4, pr5]
 llistat3 = [pr1, pr2, pr3, pr1, pr2, pr3]
 
-cmp1 = usr.registres["55245351P"].personalShopper.Assignar_Productes_Client(
-    usr.registres["55245351P"], llistat1
+cmp1 = usr5.personalShopper.Assignar_Productes_Client(
+    usr5, llistat1
 )
-cmp2 = usr.registres["55245351P"].personalShopper.Assignar_Productes_Client(
-    usr.registres["55245351P"], llistat3
+cmp2 = usr5.personalShopper.Assignar_Productes_Client(
+    usr5, llistat3
 )
-cmp3 = usr.registres["55245351P"].personalShopper.Assignar_Productes_Client(
-    usr.registres["55245351P"], llistat2
+cmp3 = usr5.personalShopper.Assignar_Productes_Client(
+    usr5, llistat2
 )
-cmp4 = usr.registres["55245351P"].personalShopper.Assignar_Productes_Client(
-    usr.registres["55245351P"], llistat2
+cmp4 = usr5.personalShopper.Assignar_Productes_Client(
+    usr5, llistat2
 )
 
 print("1. Falta de productes:", cmp1 is False)
@@ -239,16 +239,16 @@ if not cmp4:
 print("############################")
 
 # Test 10: Mètode Retornar_Producte
-usr.registres["55245351P"].comandes[1] = [pr.Producte(i, "Roba", 20, "Camiseta") for i in range (5)]
-usr.registres["55245351P"].Retornar_Producte(
+usr5.comandes[1] = [pr.Producte(i, "Roba", 20, "Camiseta") for i in range (5)]
+usr5.Retornar_Producte(
     True, [1, 1, "Perquè no és de la meva talla"]
 )
 print(
     "1. Retornar producte correctament:",
-    len(usr.registres["55245351P"].comandes[1]) == 4,
+    len(usr5.comandes[1]) == 4,
 )
 
-if len(usr.registres["55245351P"].comandes[1]) == 4:
+if len(usr5.comandes[1]) == 4:
     COMPROVADOR += 1
 print("############################")
 

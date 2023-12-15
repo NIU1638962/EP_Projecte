@@ -9,8 +9,6 @@ registres = dict()
 personal_shoppers = list()
 
 class Usuari:
-    __slots__ = ("NIF", "nom", "cognoms", "correu", "pwd")
-
     def __init__(self, NIF, nom, cognoms, correu, pwd):
         """
         Inicialització de les instàncies de la classe
@@ -64,8 +62,12 @@ class Usuari:
 
             if (resposta == "P") or (resposta == "p"):
                 dia_actual = date.today().strftime("%d/%m/%Y")
-                classe = PersonalShopper(dia_actual, list())
-                personal_shoppers.append(classe)
+                #classe = PersonalShopper(dia_actual, list())
+                #personal_shoppers.append(classe)
+                self.__class__ = PersonalShopper
+                self.data_alta = dia_actual
+                self.clients_assignats = list()
+                personal_shoppers.append(self)
 
             else:
                 if not test:
@@ -77,19 +79,26 @@ class Usuari:
 
                 random.seed(123)
                 my_personal_shopper = random.choice(personal_shoppers)
-                classe = Client(
-                    input_telefon, input_adress, my_personal_shopper
-                )
-                my_personal_shopper.clients_assignats.append(classe)
+                #classe = Client(
+                   # input_telefon, input_adress, my_personal_shopper
+                #)
+                #my_personal_shopper.clients_assignats.append(classe)
+                self.__class__ = Client
+                self.telefon = input_telefon
+                self.adress = input_adress
+                self.personalShopper = my_personal_shopper
+                self.pagaments = dict()
+                self.comandes = dict()
+                self.blacklist = list()
+                my_personal_shopper.clients_assignats.append(self)
 
-            registres[self.NIF] = classe
+            #registres[self.NIF] = classe
+            registres[self.NIF] = self
             return True
         return False
 
 
 class PersonalShopper(Usuari):
-    __slots__ = ("data_alta", "clients_assignats")
-
     def __init__(self, data_alta, clients_assignats):
         """
         Inicialització d'instàncies de la classe PersonalShopper
@@ -139,15 +148,6 @@ class PersonalShopper(Usuari):
 
 
 class Client(Usuari):
-    __slots__ = (
-        "telefon",
-        "adress",
-        "personalShopper",
-        "pagaments",
-        "comandes",
-        "blacklist",
-    )
-
     def __init__(self, telefon, adress, personalShopper):
         """
         Inicialització de les instàncies
