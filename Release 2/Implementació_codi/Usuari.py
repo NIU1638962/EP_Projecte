@@ -97,8 +97,20 @@ class Usuari:
             return True
         return False
 
+    def to_dict(self):
+       return {
+           "NIF": self.NIF,
+           "Nom": self.nom,
+           "Cognoms": self.cognoms,
+           "Correu": self.correu,
+           "Contrasenya": self.pwd
+       }
+
+
 
 class PersonalShopper(Usuari):
+    #__slots__ = ("data_alta", "clients_assignats")
+
     def __init__(self, data_alta, clients_assignats):
         """
         Inicialització d'instàncies de la classe PersonalShopper
@@ -107,6 +119,7 @@ class PersonalShopper(Usuari):
             data_alta (date): Data en que s'ha registrat el PersonalShopper 
             clients_assignats (list[class Client]): Llista d'usuaris assignats al PersonalShopper
         """
+        super().__init__(data_alta, clients_assignats)
         self.data_alta = data_alta
         self.clients_assignats = clients_assignats
 
@@ -146,8 +159,24 @@ class PersonalShopper(Usuari):
             return True
         return False
 
+    def to_dict(self):
+       return {
+           "PShopperNIF": str(self.NIF),
+           "DataAlta": self.data_alta
+       }
+
 
 class Client(Usuari):
+    """
+    __slots__ = (
+        "telefon",
+        "adress",
+        "personalShopper",
+        "pagaments",
+        "comandes",
+        "blacklist",
+    )
+    """
     def __init__(self, telefon, adress, personalShopper):
         """
         Inicialització de les instàncies
@@ -157,6 +186,7 @@ class Client(Usuari):
             adress (str): Adreça física del client
             personalShopper (class PersonalShopper): PersonalShopper que s'ha assignat
         """
+        super().__init__( telefon, adress, personalShopper)
         self.telefon = telefon
         self.adress = adress
         self.personalShopper = personalShopper
@@ -378,3 +408,11 @@ class Client(Usuari):
             while new_personalShopper in self.blacklist:
                 new_personalShopper = random.choice(personal_shoppers)
             self.personalShopper = new_personalShopper
+
+    def to_dict(self):
+       return {
+           "ClientNIF": str(self.NIF),
+           "Telefon": int(self.telefon),
+           "AdreçaPostal": self.adress,
+           "PersonalShopper": self.personalShopper.NIF
+       }

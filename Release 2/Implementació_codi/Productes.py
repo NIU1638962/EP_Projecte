@@ -46,7 +46,7 @@ class Producte:
     def __iter__(self):
         return self.valoracions.__iter__()
 
-    def valora(self, nom_client, puntuacio, opinio):
+    def valora(self, nom_client, NIF_client, puntuacio, opinio = ""):
         """
         Valorar un producte d'un client 
 
@@ -63,4 +63,12 @@ class Producte:
             assert 0 < puntuacio < 6
         except Exception as exc:  # pylint: disable=bare-except
             raise ValueError("El valor de la valoració és incorrecte") from exc
-        self.valoracions.append([nom_client, puntuacio, opinio])
+        self.valoracions.append([nom_client, NIF_client, puntuacio, opinio])
+
+    def to_dict(self):
+       return {
+           "ProducteID": str(self.codi),
+           "Nom": self.nom,
+           "Preu": self.preu,
+           "Descripcio": self.descripcio,
+       }

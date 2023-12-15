@@ -41,39 +41,11 @@ class DataBase:
         self.__cursor.execute(
             """
             CREATE TABLE IF NOT EXISTS Usuaris(
-                UsuariID INTEGER PRIMARY KEY ASC NOT NULL,
-                NIF TEXT NOT NULL,
+                NIF TEXT PRIMARY KEY ASC NOT NULL,
                 Nom  TEXT NOT NULL,
                 Cognoms TEXT NOT NULL,
                 Correu TEXT NOT NULL,
-                Contrasenya TEXT NOT NULL,
-                UNIQUE (NIF) ON CONFLICT FAIL
-            );
-            """
-        )
-
-        self.__connection.commit()
-
-        self.__cursor.execute(
-            """
-            CREATE TABLE IF NOT EXISTS Marques(
-                MarcaID INTEGER PRIMARY KEY ASC NOT NULL,
-                Nom TEXT NOT NULL,
-                Descripció TEXT NOT NULL
-            );
-            """
-        )
-
-        self.__connection.commit()
-
-        self.__cursor.execute(
-            """
-            CREATE TABLE IF NOT EXISTS Seccions(
-                SeccióID INTEGER PRIMARY KEY ASC NOT NULL,
-                Nom TEXT NOT NULL,
-                Descripció TEXT NOT NULL,
-                ContingudaEnID INTEGER,
-                FOREIGN KEY (ContingudaEnID) REFERENCES Seccions(SeccióID)
+                Contrasenya TEXT NOT NULL
             );
             """
         )
@@ -86,11 +58,13 @@ class DataBase:
         self.__cursor.execute(
             """
             CREATE TABLE IF NOT EXISTS Clients(
-                ClientID INTEGER NOT NULL,
+                ClientNIF TEXT NOT NULL,
                 Telefon INTEGER NOT NULL,
                 AdreçaPostal TEXT NOT NULL,
-                FOREIGN KEY (ClientID) REFERENCES Usuaris(UsuariID),
-                PRIMARY KEY (ClientID)
+                PersonalShopper TEXT NOT NULL,
+                FOREIGN KEY (ClientNIF) REFERENCES Usuaris(NIF),
+                FOREIGN KEY (PersonalShopper) REFERENCES Usuaris(NIF),
+                PRIMARY KEY (ClientNIF)
             );
             """
         )
@@ -99,56 +73,27 @@ class DataBase:
 
         self.__cursor.execute(
             """
-            CREATE TABLE IF NOT EXISTS Shoppers(
-                ShopperID INTEGER NOT NULL,
+            CREATE TABLE IF NOT EXISTS PersonalShoppers(
+                PShopperNIF TEXT NOT NULL,
                 DataAlta INTEGER NOT NULL,
-                FOREIGN KEY (ShopperID) REFERENCES Usuaris(UsuariID),
-                PRIMARY KEY (ShopperID)
+                FOREIGN KEY (PShopperNIF) REFERENCES Usuaris(NIF),
+                PRIMARY KEY (PShopperNIF)
             );
             """
         )
 
         self.__connection.commit()
-
-        self.__cursor.execute(
-            """
-            CREATE TABLE IF NOT EXISTS Models(
-                ModelID INTEGER PRIMARY KEY ASC NOT NULL,
-                Nom TEXT NOT NULL,
-                Descripció TEXT NOT NULL,
-                MarcaID INTEGER NOT NULL,
-                FOREIGN KEY (MarcaID) REFERENCES Marques(MarcaID)
-            );
-            """
-        )
 
     def __create_third_level_tables(self):
         logging.debug("Creating Third Level Tables if doesn't exist already.")
 
         self.__cursor.execute(
             """
-            CREATE TABLE IF NOT EXISTS Clients_Assignats(
-                ClientID INTEGER NOT NULL,
-                ShopperID INTEGER NOT NULL,
-                FOREIGN KEY (ClientID) REFERENCES Clients(ClientID),
-                FOREIGN KEY (ShopperID) REFERENCES Shoppers(ShopperID),
-                PRIMARY KEY (ClientID, ShopperID)
-            );
-            """
-        )
-
-        self.__connection.commit()
-
-        self.__cursor.execute(
-            """
             CREATE TABLE IF NOT EXISTS Productes(
-                ProducteID INTEGER PRIMARY KEY  ASC NOT NULL,
+                ProducteID TEXT PRIMARY KEY ASC NOT NULL,
                 Nom TEXT NOT NULL,
-                Descripció TEXT NOT NULL,
                 Preu REAL NOT NULL,
-                Disponibilitat TEXT NOT NULL,
-                ModelID INTEGER NOT NULL,
-                FOREIGN KEY (ModelID) REFERENCES Models(ModelID)
+                Descripcio TEXT NOT NULL
             );
             """
         )
@@ -158,44 +103,46 @@ class DataBase:
     def __create_fourth_level_tables(self):
         logging.debug("Creating Fourth Level Tables if doesn't exist already.")
 
+
+    def insert_usuari(self, usuari):
+        usr_dict = usuari.to_dict()
         self.__cursor.execute(
             """
-            CREATE TABLE IF NOT EXISTS Resenyes(
-                ClientID INTEGER NOT NULL,
-                ProducteID INTEGER NOT NULL,
-                Puntuació INTEGER NOT NULL,
-                Comentari TEXT,
-                FOREIGN KEY (ClientID) REFERENCES Clients(ClientID),
-                FOREIGN KEY (ProducteID) REFERENCES Productes(ProducteID),
-                PRIMARY KEY (ClientID, ProducteID),
-                CHECK (Puntuació BETWEEN 0 AND 5)
-            );
-            """
+            INSERT INTO Usuaris(NIF, Nom, Cognoms, Correu, Contrasenya)
+            VALUES(:NIF, :Nom, :Cognoms, :Correu, :Contrasenya)
+            """,
+            usr_dict
         )
-
         self.__connection.commit()
 
+    def insert_personalshopper(self, ps):
+        ps_dict = ps.to_dict()
         self.__cursor.execute(
             """
-            CREATE TABLE IF NOT EXISTS Pertenença(
-                ProducteID INTEGER NOT NULL,
-                SeccióID INTEGER NOT NULL,
-                FOREIGN KEY (ProducteID) REFERENCES Productes(ProducteID),
-                FOREIGN KEY (SeccióID) REFERENCES Seccions(SeccióID),
-                PRIMARY KEY (ProducteID, SeccióID)
-            );
-            """
+            INSERT INTO PersonalShoppers(PShopperNIF, DataAlta)
+            VALUES(:PShopperNIF, :DataAlta)
+            """,
+            ps_dict
         )
-
         self.__connection.commit()
 
-    def __add_user(self, nif: str, nom: str, cognoms):
-        logging.debug(f"Adding new user to databse: {nif}, {nom}, ")
-
-    def sign_in_user(
-        self,
-    ):
-        pass
-
-
-database = DataBase("test")
+    def insert_client(self, c):
+        c_dict = c.to_dict()
+        self.__cursor.execute(
+            """
+            INSERT INTO Clients(ClientNIF, Telefon, AdreçaPostal, PersonalShopper)
+            VALUES(:ClientNIF, :Telefon, :AdreçaPostal, :PersonalShopper)
+            """,
+            c_dict
+        )
+        self.__connection.commit()
+    def insert_producte(self, producte):
+        producte_dict = producte.to_dict()
+        self.__cursor.execute(
+            """
+            INSERT INTO Productes(ProducteID, Nom, Preu, Descripcio)
+            VALUES(:ProducteID, :Nom, :Preu, :Descripcio)
+            """,
+            producte_dict
+        )
+        self.__connection.commit()

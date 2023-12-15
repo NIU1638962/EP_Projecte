@@ -98,6 +98,7 @@ print("TEST 4: GENERAR CORRECTAMENT CLIENT:")
 V5 = usr5.Donar_alta(
     True, "C", ["645965549", "Barcelona, Granollers, Carrer Girona, 11"]
 )
+print(usr5.NIF, usr5.telefon)
 print(
     "1. Comprovar telefon:", usr5.telefon == "645965549"
 )
