@@ -1,0 +1,13 @@
+Patrons de disseny implementats en els codis:
+
+1. Patrons de disseny de creació:
+    - Factory Method: El mètode Donar_Alta de Usuari.py. Aquest crea les classes derivades (Client i PersonalShopper) al fer el registre a l'aplicació
+    - Singleton: Les variables globals de Usuari.py (personal_shoppers i registres).
+
+2. Patrons de disseny estructurals:
+    - Composite: Les classes de Usuari.py contenen una estructura jeràrquica, on la classe base són els Usuaris, i les derivades són Client i PersonalShopper.
+    - Facade: data_base.py, que representa tot el subsistema per crear i guardar dades en les nostres bases de dades.
+
+3. Patrons de disseny de comportament:
+    - Iterator: En la classe Producte de Productes.py es conté un mètode per iterar objectes d'aquesta classe (__iter__).
+    - Observers: Atributs del Client com "comandes" o "blacklist", que pot notificar a les classes quines comandes ha realitzat o quants cops ha canviat de PersonalShopper.
