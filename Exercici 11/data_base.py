@@ -46,7 +46,8 @@ class DataBase:
                 Nom  TEXT NOT NULL,
                 Cognoms TEXT NOT NULL,
                 Correu TEXT NOT NULL,
-                Contrasenya TEXT NOT NULL
+                Contrasenya TEXT NOT NULL,
+                UNIQUE (NIF) ON CONFLICT FAIL
             );
             """
         )
@@ -166,7 +167,8 @@ class DataBase:
                 Comentari TEXT,
                 FOREIGN KEY (ClientID) REFERENCES Clients(ClientID),
                 FOREIGN KEY (ProducteID) REFERENCES Productes(ProducteID),
-                PRIMARY KEY (ClientID, ProducteID)
+                PRIMARY KEY (ClientID, ProducteID),
+                CHECK (Puntuació BETWEEN 0 AND 5)
             );
             """
         )
@@ -187,8 +189,13 @@ class DataBase:
 
         self.__connection.commit()
 
-    def __add_user(self, nif: str, nom: str):
+    def __add_user(self, nif: str, nom: str, cognoms):
         logging.debug(f"Adding new user to databse: {nif}, {nom}, ")
+
+    def sign_in_user(
+        self,
+    ):
+        pass
 
 
 database = DataBase("test")
